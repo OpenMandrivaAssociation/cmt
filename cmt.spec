@@ -12,7 +12,6 @@ Patch:	 cmt-gcc3.1.patch.bz2
 License: GPL
 Group: Sound
 URL: http://www.ladspa.org
-BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: ladspa-devel
 
 %description 
