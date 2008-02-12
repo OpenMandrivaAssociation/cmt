@@ -16,7 +16,6 @@ BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: ladspa-devel
 
 %description 
-
 The Computer Music Toolkit (CMT) is a collection of LADSPA plugins for
 use with software synthesis and recording packages on Linux.
 
