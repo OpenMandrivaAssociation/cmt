@@ -1,7 +1,7 @@
 %define name cmt
 %define oname cmt_src
 %define version 1.15
-%define release %mkrel 5
+%define release %mkrel 7
 
 Summary: Computer Music Toolkit ladspa plugins
 Name: %{name}
