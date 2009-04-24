@@ -1,15 +1,15 @@
 %define name cmt
 %define oname cmt_src
-%define version 1.15
-%define release %mkrel 7
+%define version 1.16
+%define release %mkrel 1
 
 Summary: Computer Music Toolkit ladspa plugins
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: http://www.ladspa.org/download/%{oname}_%version.tar.bz2
-Patch:	 cmt-gcc3.1.patch.bz2
-License: GPL
+Source0: http://www.ladspa.org/download/%{oname}_%version.tgz
+Patch:	 cmt-optflags.patch
+License: GPLv2+
 Group: Sound
 URL: http://www.ladspa.org
 BuildRoot: %{_tmppath}/%{name}-buildroot
@@ -23,7 +23,7 @@ This package contains several audio plugins, including freeverb.
 
 %prep
 %setup -q -n %name
-%patch
+%patch -p1
 
 %build
 cd src
