@@ -1,0 +1,81 @@
+diff -up cmt_1.17/src/analogue.cpp.omv~ cmt_1.17/src/analogue.cpp
+--- cmt_1.17/src/analogue.cpp.omv~	2021-01-07 00:15:40.555396078 +0100
++++ cmt_1.17/src/analogue.cpp	2021-01-07 00:15:57.069807231 +0100
+@@ -64,22 +64,22 @@
+ #define PI 3.14159265358979F
+ #endif
+ 
+-typedef struct Envelope
++typedef struct aEnvelope
+ {
+   int          envelope_decay;
+   LADSPA_Data  envelope;
+ 
+-  Envelope () : envelope_decay (0), envelope (0.0) {}
+-} Envelope;
++  aEnvelope () : envelope_decay (0), envelope (0.0) {}
++} aEnvelope;
+ 
+ class Analogue : public CMT_PluginInstance
+ {
+   LADSPA_Data sample_rate;
+ 
+   int         trigger;
+-  Envelope    dco1_env;
+-  Envelope    dco2_env;
+-  Envelope    filt_env; 
++  aEnvelope    dco1_env;
++  aEnvelope    dco2_env;
++  aEnvelope    filt_env; 
+   LADSPA_Data d1;
+   LADSPA_Data d2;
+ 
+@@ -124,7 +124,7 @@ public:
+   }
+ 
+   static inline LADSPA_Data
+-  envelope(Envelope    *env,
++  envelope(aEnvelope   *env,
+            int          gate,
+            LADSPA_Data  attack,
+            LADSPA_Data  decay,
+diff -up cmt_1.17/src/organ.cpp.omv~ cmt_1.17/src/organ.cpp
+--- cmt_1.17/src/organ.cpp.omv~	2021-01-07 00:15:58.983854494 +0100
++++ cmt_1.17/src/organ.cpp	2021-01-07 00:16:05.746020825 +0100
+@@ -58,13 +58,13 @@
+ #define PI 3.14159265358979
+ #endif
+ 
+-typedef struct Envelope
++typedef struct oEnvelope
+ {
+   int          envelope_decay;
+   double       envelope;
+ 
+-  Envelope () : envelope_decay (0), envelope (0.0) {}
+-} Envelope;
++  oEnvelope () : envelope_decay (0), envelope (0.0) {}
++} oEnvelope;
+ 
+ static LADSPA_Data *g_sine_table;
+ static LADSPA_Data *g_triangle_table;
+@@ -75,8 +75,8 @@ class Organ : CMT_PluginInstance
+ {
+   LADSPA_Data sample_rate;
+ 
+-  Envelope env0;
+-  Envelope env1;
++  oEnvelope env0;
++  oEnvelope env1;
+ 
+   unsigned long harm0_accum;
+   unsigned long harm1_accum;
+@@ -149,7 +149,7 @@ class Organ : CMT_PluginInstance
+   }
+ 
+   static inline LADSPA_Data
+-  envelope(Envelope    *env,
++  envelope(oEnvelope   *env,
+            int          gate,
+            LADSPA_Data  attack,
+            LADSPA_Data  decay,

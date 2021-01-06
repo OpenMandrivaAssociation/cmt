@@ -1,12 +1,12 @@
-diff -p -up cmt/src/makefile~ cmt/src/makefile
---- cmt/src/makefile~	2009-03-31 09:31:08.000000000 +0200
-+++ cmt/src/makefile	2009-03-31 09:32:11.000000000 +0200
+diff -up cmt_1.17/src/Makefile.1~ cmt_1.17/src/Makefile
+--- cmt_1.17/src/Makefile.1~	2021-01-07 00:05:11.033632924 +0100
++++ cmt_1.17/src/Makefile	2021-01-07 00:05:43.326869297 +0100
 @@ -11,7 +11,7 @@ INSTALL_PLUGINS_DIR	=	/usr/lib/ladspa/
  # GENERAL
  #
  
--CFLAGS		=	$(INCLUDES) -Wall -O3 -fPIC
-+CFLAGS		=	$(INCLUDES) -Wall $(OPTFLAGS) -fPIC
+-CFLAGS		=	$(INCLUDES) -Wall -Werror -O2 -fPIC
++CFLAGS		=	$(INCLUDES) -Wall -Werror $(OPTFLAGS) -fPIC
  CXXFLAGS	=	$(CFLAGS)
  PLUGIN_LIB	=	../plugins/cmt.so
  
