@@ -9,7 +9,7 @@ Patch:	 cmt-optflags.patch
 Patch1:	cmt-1.17-fix-lto.patch
 License: GPLv2+
 Group: Sound
-URL: http://www.ladspa.org
+URL: https://www.ladspa.org
 BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: ladspa-devel
 
