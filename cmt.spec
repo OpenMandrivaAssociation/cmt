@@ -1,37 +1,38 @@
 %global debug_package %{nil}
 
-Summary: Computer Music Toolkit ladspa plugins
+Summary:	Computer Music Toolkit ladspa plugins
 Name: cmt
-Version: 1.17
+Version: 1.18
 Release: 1
-Source0: http://www.ladspa.org/download/%{name}_%version.tgz
-Patch:	 cmt-optflags.patch
+License:	GPLv2+
+Group:	Sound
+Url:	https://www.ladspa.org
+Source0:	https://www.ladspa.org/download/%{name}_%version.tgz
+Patch0:	cmt-1.18-optflags.patch
 Patch1:	cmt-1.17-fix-lto.patch
-License: GPLv2+
-Group: Sound
-URL: https://www.ladspa.org
-BuildRoot: %{_tmppath}/%{name}-buildroot
-BuildRequires: ladspa-devel
+BuildRequires:	ladspa-devel
 
 %description 
-The Computer Music Toolkit (CMT) is a collection of LADSPA plugins for
-use with software synthesis and recording packages on Linux.
-
+The Computer Music Toolkit (CMT) is a collection of LADSPA plugins for use
+with software synthesis and recording packages on Linux.
 This package contains several audio plugins, including freeverb.
+
+%files
+%doc doc/*.html
+%{_libdir}/ladspa/%{name}.so
+
+#-----------------------------------------------------------------------------
 
 %prep
 %autosetup -p1 -n %{name}_%{version}
 
+
 %build
 cd src
-%make targets OPTFLAGS="%optflags"
+%make targets OPTFLAGS="%{optflags}"
+
 
 %install
-rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT%_libdir/ladspa
-cp plugins/* $RPM_BUILD_ROOT%_libdir/ladspa
-
-%files
-%defattr(-,root,root)
-%doc doc/*
-%_libdir/ladspa/*.so
+cd src
+mkdir -p %{buildroot}%{_libdir}/ladspa
+%make_install INSTALL_PLUGINS_DIR="%{buildroot}%{_libdir}/ladspa"
