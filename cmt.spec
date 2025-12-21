@@ -10,6 +10,7 @@ Url:	https://www.ladspa.org
 Source0:	https://www.ladspa.org/download/%{name}_%version.tgz
 Patch0:	cmt-1.18-optflags.patch
 Patch1:	cmt-1.17-fix-lto.patch
+BuildRequires:	make
 BuildRequires:	ladspa-devel
 
 %description 
